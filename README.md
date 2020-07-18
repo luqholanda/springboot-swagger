@@ -28,6 +28,6 @@ Add additional notes about how to deploy this on a live system
 
 ## About author
 
-I'm a software developer since 2012, visit my webpage bellow
+I'm a software developer since 2012, visit my webpage clicking on link bellow
 
 * [lucasholanda.com](https://lucasholanda.com) - Lucas Holanda Portfolio
