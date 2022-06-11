@@ -12,53 +12,31 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Proxy;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "EXAMPLE")
 @Proxy(lazy = true)
-public class ExampleEntity implements Serializable
-{
-   
-   private static final long serialVersionUID = 6359109992803201653L;
+public class ExampleEntity implements Serializable {
 
-   @Id
-   @Column(name = "ID", updatable = false)
-   @GeneratedValue(strategy = GenerationType.IDENTITY)  
-   private Long id;
+	private static final long serialVersionUID = 6359109992803201653L;
 
-   @Column(name = "CONTENT")
-   private String content;
-   
-   @Column(name = "INSERT_DATE")
-   private Date insertDate;
+	@Id
+	@Column(name = "ID", updatable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-   public Long getId()
-   {
-      return id;
-   }
+	@Column(name = "CONTENT")
+	private String content;
 
-   public void setId(Long id)
-   {
-      this.id = id;
-   }
-
-   public String getContent()
-   {
-      return content;
-   }
-
-   public void setContent(String content)
-   {
-      this.content = content;
-   }
-
-   public Date getInsertDate()
-   {
-      return insertDate;
-   }
-
-   public void setInsertDate(Date insertDate)
-   {
-      this.insertDate = insertDate;
-   }
+	@Column(name = "INSERT_DATE")
+	private Date insertDate;
 
 }

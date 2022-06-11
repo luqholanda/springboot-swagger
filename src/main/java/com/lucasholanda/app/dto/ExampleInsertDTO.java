@@ -3,33 +3,20 @@ package com.lucasholanda.app.dto;
 import java.io.Serializable;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public class ExampleInsertDTO implements Serializable
-{
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class ExampleInsertDTO implements Serializable {
 
-   private static final long serialVersionUID = -4084564163867412641L;
+	private static final long serialVersionUID = -4084564163867412641L;
 
-   @ApiModelProperty(value = "Content Field")
-   private String content;
-   
-   public ExampleInsertDTO()
-   {
-   }
-   
-   public ExampleInsertDTO(String content)
-   {
-      super();
-      this.content = content;
-   }
+	@ApiModelProperty(value = "Content Field")
+	private String content;
 
-   public String getContent()
-   {
-      return content;
-   }
-
-   public void setContent(String content)
-   {
-      this.content = content;
-   }
-   
 }

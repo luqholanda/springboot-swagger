@@ -1,0 +1,39 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: "jdbc:h2:~/test"
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+app:
+  swagger:
+    basepackage: com.lucasholanda.app.controller
+    title: Spring Boot REST Services
+    description: Spring Boot REST with Swagger
+    version: 1.0.0
+    license:
+      name: MIT
+      url: https://opensource.org/licenses/MIT
+    contact:
+      name: Lucas Holanda
+      url: https://lucasholanda.com
+      mail: lucas@sollutie.com.br

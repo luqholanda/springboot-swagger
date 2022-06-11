@@ -25,70 +25,73 @@ import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("/example")
-public class ExampleController
-{
-   
-   @Autowired
-   ExampleService service; 
-   
-   @ApiOperation(value = "Search")
-   @ApiResponses(value = { 
-      @ApiResponse(code = 200, message = "Successful operation", response = ExampleSearchDTO.class, reference = "List"),
-      @ApiResponse(code = 204, message = "No records found"), 
-      @ApiResponse(code = 401, message = "Access denied"),
-      @ApiResponse(code = 403, message = "You doesn't have permission"), 
-      @ApiResponse(code = 404, message = "Not found"),
-      @ApiResponse(code = 500, message = "Internal server error") 
-   })
-   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-   public List<ExampleSearchDTO> get()
-   {
-      return service.findAllEntity();
-   }
-   
-   @ApiOperation(value = "Insert")
-   @ApiResponses(value = { 
-      @ApiResponse(code = 200, message = "Successful operation"),
-      @ApiResponse(code = 204, message = "No records found"), 
-      @ApiResponse(code = 401, message = "Access denied"),
-      @ApiResponse(code = 403, message = "You doesn't have permission"), 
-      @ApiResponse(code = 404, message = "Not found"),
-      @ApiResponse(code = 500, message = "Internal server error") 
-   })
-   @PostMapping
-   public void insert(@ApiParam(name = "Example DTO", value = "Object to insert", required = true) @RequestBody ExampleInsertDTO dto)
-   {
-      service.insert(dto);
-   }
-   
-   @ApiOperation(value = "Update")
-   @ApiResponses(value = { 
-      @ApiResponse(code = 200, message = "Successful operation"),
-      @ApiResponse(code = 204, message = "No records found"), 
-      @ApiResponse(code = 401, message = "Access denied"),
-      @ApiResponse(code = 403, message = "You doesn't have permission"), 
-      @ApiResponse(code = 404, message = "Not found"),
-      @ApiResponse(code = 500, message = "Internal server error") 
-   })
-   @PutMapping
-   public void update(@ApiParam(name = "Example DTO", value = "Object to update", required = true) @RequestBody ExampleUpdateDTO dto)
-   {
-      service.update(dto);
-   }
-   
-   @ApiOperation(value = "Delete")
-   @ApiResponses(value = { 
-      @ApiResponse(code = 200, message = "Successful operation"),
-      @ApiResponse(code = 204, message = "No records found"), 
-      @ApiResponse(code = 401, message = "Access denied"),
-      @ApiResponse(code = 403, message = "You doesn't have permission"), 
-      @ApiResponse(code = 404, message = "Not found"),
-      @ApiResponse(code = 500, message = "Internal server error") 
-   })
-   @DeleteMapping
-   public void delete(@ApiParam(name = "id", value = "Example ID", required = true) @RequestParam Long id)
-   {
-      service.delete(id);
-   }
-   
+public class ExampleController {
+
+	@Autowired
+	ExampleService service;
+
+	@ApiOperation(value = "Search")
+	@ApiResponses(value = {
+		@ApiResponse(code = 200, message = "Successful operation", response = ExampleSearchDTO.class, reference = "List"),
+		@ApiResponse(code = 204, message = "No records found"),
+		@ApiResponse(code = 401, message = "Access denied"),
+		@ApiResponse(code = 403, message = "You doesn't have permission"),
+		@ApiResponse(code = 404, message = "Not found"),
+		@ApiResponse(code = 500, message = "Internal server error")
+	})
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<ExampleSearchDTO> get() {
+
+		return service.findAllEntity();
+
+	}
+
+	@ApiOperation(value = "Insert")
+	@ApiResponses(value = {
+		@ApiResponse(code = 200, message = "Successful operation"),
+		@ApiResponse(code = 204, message = "No records found"),
+		@ApiResponse(code = 401, message = "Access denied"),
+		@ApiResponse(code = 403, message = "You doesn't have permission"),
+		@ApiResponse(code = 404, message = "Not found"),
+		@ApiResponse(code = 500, message = "Internal server error")
+	})
+	@PostMapping
+	public void insert(@ApiParam(name = "Example DTO", value = "Object to insert", required = true) @RequestBody ExampleInsertDTO dto) {
+
+		service.insert(dto);
+
+	}
+
+	@ApiOperation(value = "Update")
+	@ApiResponses(value = {
+		@ApiResponse(code = 200, message = "Successful operation"),
+		@ApiResponse(code = 204, message = "No records found"),
+		@ApiResponse(code = 401, message = "Access denied"),
+		@ApiResponse(code = 403, message = "You doesn't have permission"),
+		@ApiResponse(code = 404, message = "Not found"),
+		@ApiResponse(code = 500, message = "Internal server error")
+	})
+	@PutMapping
+	public void update(@ApiParam(name = "Example DTO", value = "Object to update", required = true) @RequestBody ExampleUpdateDTO dto) {
+
+		service.update(dto);
+
+	}
+
+	@ApiOperation(value = "Delete")
+	@ApiResponses(value = {
+		@ApiResponse(code = 200, message = "Successful operation"),
+		@ApiResponse(code = 204, message = "No records found"),
+		@ApiResponse(code = 401, message = "Access denied"),
+		@ApiResponse(code = 403, message = "You doesn't have permission"),
+		@ApiResponse(code = 404, message = "Not found"),
+		@ApiResponse(code = 500, message = "Internal server error")
+	})
+	@DeleteMapping
+	public void delete(@ApiParam(name = "id", value = "Example ID", required = true) @RequestParam Long id) {
+
+		service.delete(id);
+
+	}
+
 }

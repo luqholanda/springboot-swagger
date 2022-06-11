@@ -11,49 +11,52 @@ import com.lucasholanda.app.dto.ExampleInsertDTO;
 import com.lucasholanda.app.dto.ExampleSearchDTO;
 import com.lucasholanda.app.dto.ExampleUpdateDTO;
 import com.lucasholanda.app.entity.ExampleEntity;
+import com.lucasholanda.app.exception.NoContentException;
 import com.lucasholanda.app.repository.ExampleRepository;
 import com.lucasholanda.app.service.ExampleService;
 
 @Service
-public class ExampleServiceImpl implements ExampleService
-{
+public class ExampleServiceImpl implements ExampleService {
 
-   @Autowired
-   ExampleRepository repository;
-   
-   @Override
-   public List<ExampleSearchDTO> findAllEntity()
-   {
-      return repository.findAllEntity();
-   }
+	@Autowired
+	ExampleRepository repository;
 
-   @Override
-   public void insert(ExampleInsertDTO dto)
-   {
-      ExampleEntity entity = new ExampleEntity();
-      entity.setContent(dto.getContent());
-      entity.setInsertDate(new Date());
-      
-      this.repository.save(entity);
-   }
+	@Override
+	public List<ExampleSearchDTO> findAllEntity() {
 
-   @Override
-   public void update(ExampleUpdateDTO dto)
-   {
-      Optional<ExampleEntity> optionalEntity = this.repository.findById(dto.getId());
-      
-      if (optionalEntity.isPresent())
-      {
-         ExampleEntity entity = optionalEntity.get();
-         entity.setContent(dto.getContent());
-         this.repository.save(entity);
-      }
-   }
+		return repository.findAllEntity().orElseThrow(NoContentException::new);
 
-   @Override
-   public void delete(Long id)
-   {
-      this.repository.deleteById(id);
-   }
+	}
+
+	@Override
+	public void insert(ExampleInsertDTO dto) {
+
+		ExampleEntity entity = new ExampleEntity();
+		entity.setContent(dto.getContent());
+		entity.setInsertDate(new Date());
+
+		this.repository.save(entity);
+
+	}
+
+	@Override
+	public void update(ExampleUpdateDTO dto) {
+
+		Optional<ExampleEntity> optionalEntity = this.repository.findById(dto.getId());
+
+		if (optionalEntity.isPresent()) {
+			ExampleEntity entity = optionalEntity.get();
+			entity.setContent(dto.getContent());
+			this.repository.save(entity);
+		}
+
+	}
+
+	@Override
+	public void delete(Long id) {
+
+		this.repository.deleteById(id);
+
+	}
 
 }
