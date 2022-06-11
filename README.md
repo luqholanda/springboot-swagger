@@ -19,7 +19,7 @@ http://localhost:8080/h2
 Open your brownser and type 
 
 ```
-http://localhost:8080/swagger-ui/html
+http://localhost:8080/swagger-ui.html
 ```
 
 ## Deployment
